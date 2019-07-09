@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.stars{
+  color:salmon;
+  font-size:20em;
+  text-align: right;
+  margin-top:-0.1em;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './CSS/index.css';
+import App from './content/App';
 import * as serviceWorker from './serviceWorker';
 let hippobeba =document.getElementById('root');
 let marsuperse = <h1 class="stars">Hippojen bebat ovat suurepia kuin marsujen. This is true true</h1>

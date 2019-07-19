@@ -1,8 +1,12 @@
 import React from 'react';
-
-
+import NewInput from './NewInput';
+import '../CSS/App.css'
 function App() {
-  return 
+  return (
+    
+    <NewInput />
+  
+  )
 }
 
 export default App;

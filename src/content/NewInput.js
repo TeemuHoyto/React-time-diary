@@ -5,7 +5,7 @@ class NewInput extends React.Component{
     constructor(){
         super()
         this.state = {
-            Item:[],
+            Item:"",
             list:[]
             
         }
@@ -42,6 +42,7 @@ this.setState({
         
     }
     render(){
+     //   const TodoItems = this.state.list.item
         return(
             <div className="center">
                <label htmlFor="Item">
@@ -55,7 +56,7 @@ this.setState({
 
                 <button onClick={this.handleClick}>Add ITEM</button> 
                 
-                
+          
             </div>
         )
     }

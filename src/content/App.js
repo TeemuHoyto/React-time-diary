@@ -1,25 +1,33 @@
 import React from 'react';
 import Tabs from './Tabs.js';
-import { render } from "react-dom";
+import NewInput from './NewInput.js'
 import Header from './Header.js'
 import Footer from './Footer.js'
+import TabAddButton from './TabAddButton.js'
 import '../CSS/App.css'
+
+
+
+
 function App() {
   return (
       <div>
         <Header />
-        <h1>Tabs Demo</h1>
+        
         <Tabs>
-          <div label="Gator">
-            See ya later, <em>Alligator</em>!
+          
+          <div label="Todo">
+            <NewInput />
           </div>
-          <div label="Croc">
-            After &apos;while, <em>Crocodile</em>!
+          <div label="Calendar">
+            Not done yet
           </div>
-          <div label="Sarcosuchus">
+          <div label="TimeDiary">
             Nothing to see here, this tab is <em>extinct</em>!
           </div>
+          
         </Tabs>
+        <Footer />
       </div>
     );
   }

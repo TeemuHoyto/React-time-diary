@@ -1,0 +1,22 @@
+.textarea{
+    font-size:10em;
+    position:absolute;
+    top:2em;
+    height:2em;
+    width:auto;
+   visibility: visible;
+    left: 30%;
+  }
+  .TabAddTextArea{
+    width:5em;
+    font-size: 1em;
+  
+  }
+  .TabAddTextAreaSubmitButton{
+    width:100%;
+    background-color: white;
+    height: 60%
+  }
+  .buttonOfdesignatedPoweer{
+    display:inline-flex;
+  }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import '../CSS/Tabs.css'
+import TabAddButton from './TabAddButton.js'
 import Tab from './Tab';
 
 class Tabs extends Component {
@@ -38,19 +39,25 @@ class Tabs extends Component {
             const { label } = child.props;
 
             return (
+             
               <Tab
                 activeTab={activeTab}
                 key={label}
                 label={label}
                 onClick={onClickTabItem}
               />
+              
+              
             );
           })}
+          <TabAddButton />
+          
         </ol>
         <div className="tab-content">
           {children.map((child) => {
             if (child.props.label !== activeTab) return undefined;
             return child.props.children;
+            
           })}
         </div>
       </div>

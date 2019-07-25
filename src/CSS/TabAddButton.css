@@ -4,7 +4,7 @@
     top:2em;
     height:2em;
     width:auto;
-   visibility: visible;
+   
     left: 30%;
   }
   .TabAddTextArea{
@@ -18,5 +18,10 @@
     height: 60%
   }
   .buttonOfdesignatedPoweer{
-    display:inline-flex;
-  }
+  position: absolute;
+  top:2em;
+  right:2em;
+  width:10em;
+  height:4em;
+background-color: white;  
+}

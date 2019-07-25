@@ -9,14 +9,22 @@ import '../CSS/App.css'
 
 
 
-function App() {
+class App extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      
+    }
+  }
+  
+  render(){
   return (
       <div>
         <Header />
-        
+       
         <Tabs>
           
-          <div label="Todo">
+          <div  label="Todo">
             <NewInput />
           </div>
           <div label="Calendar">
@@ -31,4 +39,5 @@ function App() {
       </div>
     );
   }
+}
 export default App;

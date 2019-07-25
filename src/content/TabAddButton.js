@@ -1,36 +1,42 @@
 import React from 'react'
 import '../CSS/TabAddButton.css'
-import FileThatSharesProps from './FileThatSharesProps.js'
-import Footer from './Footer.js'
-class TabAdd extends React.Component {
+
+class TabAddButton extends React.Component {
     constructor() {
         super()
         this.state = {
-            visible: true,
+            visibility: true,
             name: ""
         }
         this.handleCklick = this.handleCklick.bind(this)
     }
-    handleCklick(prevState) {
-this.setState(prevState =>{
-    prevState.visible = !prevState.visible
-     
+    handleCklick() {
+        this.setState({
+            visibility: !this.state.visibility
+
+  
         }) 
-        console.log(this.state.visible)
+       
     }
        
     render() {
+        const DeStyle = this.state.visibility ? {display:'none'} :{}
         return (
-            
-         <button class="buttonOfdesignatedPoweer" onClick = 
-            {this.props.handleCklick} > 
+           <div>
+<button className="buttonOfdesignatedPoweer" onClick = 
+            {this.handleCklick} > 
             Add Tab 
          </button>
+         <div className="textarea" style={DeStyle}>
+    <input className="TabAddTextArea"name="TabName" type="textarea"></input>
+    <br/>
+    <button className="TabAddTextAreaSubmitButton" type="button" name="submit" label="submit">submit</button>
+  </div>
+         </div>
          
-          
         )
     }
 }
+    
 
-
-export default TabAdd
+export default TabAddButton

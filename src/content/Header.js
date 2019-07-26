@@ -11,7 +11,7 @@ class Header extends React.Component{
     }
     render(){
         return(
-            <header>header with multible tabs</header>
+            <header></header>
         )
     }
 }

@@ -6,7 +6,10 @@ class NewInput extends React.Component{
         super()
         this.state = {
             Item:"",
-            list:[]
+            list:[
+
+            ],
+            todos:[]
             
         }
         this.handleChange = this.handleChange.bind(this)
@@ -20,18 +23,30 @@ event.preventDefault()
 const newItem = this.state.Item
 const completed = false
 const id = this.state.list.length +1
-const OBJ = {'id':id, 'item':newItem, 'completed':completed}
+const OBJ = {'id':id, 'itemm':newItem, 'completed':completed}
 
 this.setState(prevState => {
-prevState.list.push([OBJ])
+prevState.list.push(OBJ)
 
     console.log(this.state.list)
 })
 this.setState({
-    Item: []
+    Item: ""
 })
         }
-        
+        handletodo(id) {
+            this.setState(prevState => {
+                const updatedTodos = prevState.list.map(todo => {
+                    if (todo.id === id) {
+                        todo.completed = !todo.completed
+                    }
+                    return todo
+                })
+                return {
+                    todos: updatedTodos
+                }
+            })
+        }
     handleChange(event){
         const target = event.target
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -41,7 +56,20 @@ this.setState({
         })
         
     }
+
     render(){
+        const items = this.state.list.map((item, key) =>
+        <div>
+        
+<input 
+                type="checkbox" 
+                checked={this.props.completed} 
+                onChange={() => this.handletodo(this.props.id)}
+            />
+        <li key={item.id}>{item.itemm}</li>
+        </div>
+    );
+    
      //   const TodoItems = this.state.list.item
         return(
             <div className="center">
@@ -56,6 +84,7 @@ this.setState({
 
                 <button onClick={this.handleClick}>Add ITEM</button> 
                 
+                {items}
           
             </div>
         )

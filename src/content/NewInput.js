@@ -2,18 +2,18 @@ import React from "react"
 
 
 class NewInput extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             Item:"",
             list:[
 
-            ],
-            todos:[]
+            ]
             
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
+        this.handletodo = this.handletodo.bind(this)
     }
 
   
@@ -34,6 +34,7 @@ this.setState({
     Item: ""
 })
         }
+        
         handletodo(id) {
             this.setState(prevState => {
                 const updatedTodos = prevState.list.map(todo => {
@@ -43,10 +44,14 @@ this.setState({
                     return todo
                 })
                 return {
-                    todos: updatedTodos
+                    list: updatedTodos
+                    
                 }
+                
             })
+            {console.log(this.state.list)}
         }
+        
     handleChange(event){
         const target = event.target
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -58,17 +63,11 @@ this.setState({
     }
 
     render(){
-        const items = this.state.list.map((item, key) =>
-        <div>
-        
-<input 
-                type="checkbox" 
-                checked={this.props.completed} 
-                onChange={() => this.handletodo(this.props.id)}
-            />
-        <li key={item.id}>{item.itemm}</li>
-        </div>
-    );
+        const completedStyle = {
+            textDecoration:" line-through",
+            color:"pink",
+        }
+        let list = this.state.list
     
      //   const TodoItems = this.state.list.item
         return(
@@ -83,9 +82,13 @@ this.setState({
                 </label>
 
                 <button onClick={this.handleClick}>Add ITEM</button> 
+                {list.map((item)  =>
+              <div>
+             
+                <p style={item.completed ? completedStyle : null } onClick={() => this.handletodo(item.id)} key={item.id}>{item.itemm} </p>
                 
-                {items}
-          
+                </div>
+                )}
             </div>
         )
     }

@@ -10,12 +10,18 @@
   .tab-list-item {
     display: inline-block;
     list-style: none;
+    color:white;
+    font-size:1.6em;
     margin-bottom: -1px;
+    margin-left:0.4em;
     padding: 0.5rem 0.75rem;
   }
   
   .tab-list-active {
-    background-color: white;
+    background-color:rgb(18, 22, 22);
+    color:white;
+    font-size:2em;
     border: solid #ccc;
+    border-radius:20px 20px 0px 0px;
     border-width: 1px 1px 0 1px;
   }

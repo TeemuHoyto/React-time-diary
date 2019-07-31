@@ -1,5 +1,5 @@
 import React from "react"
-
+import '../CSS/NewInput.css'
 
 class NewInput extends React.Component{
     constructor(props){
@@ -8,7 +8,7 @@ class NewInput extends React.Component{
             Item:"",
             list:[
 
-            ]
+            ],
             
         }
         this.handleChange = this.handleChange.bind(this)
@@ -19,8 +19,12 @@ class NewInput extends React.Component{
   
 
     handleClick(event){
+
 event.preventDefault()
 const newItem = this.state.Item
+if (this.state.Item === ''){
+    return null
+}else{
 const completed = false
 const id = this.state.list.length +1
 const OBJ = {'id':id, 'itemm':newItem, 'completed':completed}
@@ -34,7 +38,7 @@ this.setState({
     Item: ""
 })
         }
-        
+    }      
         handletodo(id) {
             this.setState(prevState => {
                 const updatedTodos = prevState.list.map(todo => {
@@ -61,8 +65,16 @@ this.setState({
         })
         
     }
+ /*   handleChangeAwesome(event){
+        
+        this.setState({
+            list.itemm: event.target.value
+        })
+        
+    }*/
 
     render(){
+
         const completedStyle = {
             textDecoration:" line-through",
             color:"pink",
@@ -76,16 +88,31 @@ this.setState({
                 <input 
                 name = "Item"
                 type = "text"
+                className="InputOfTodos"
                 value = {this.state.Item}
                 onChange = {this.handleChange}
                 />
                 </label>
 
-                <button onClick={this.handleClick}>Add ITEM</button> 
+                <button className="AddItemButton" onClick={this.handleClick}>Add ITEM</button> 
                 {list.map((item)  =>
               <div>
-             
-                <p style={item.completed ? completedStyle : null } onClick={() => this.handletodo(item.id)} key={item.id}>{item.itemm} </p>
+                  <div className="CheckBoxOfTodosmapped">
+             <input 
+                name = {item.id}
+                type = "checkbox"
+            
+                checked = {item.completed}
+                onChange = {() => this.handletodo(item.id)}
+                />
+                </div>
+                <input 
+                name="name"
+                type="text"
+                className="InputOfTodosmapped"
+                value={item.itemm}
+                id = {item.id}
+                style={item.completed ? completedStyle : null } />
                 
                 </div>
                 )}

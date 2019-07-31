@@ -3,8 +3,6 @@ import Tabs from './Tabs.js';
 import NewInput from './NewInput.js'
 import Header from './Header.js'
 import Footer from './Footer.js'
-
-import TabAddButton from './TabAddButton.js'
 import '../CSS/App.css'
 
 

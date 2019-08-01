@@ -6,11 +6,7 @@ body{
   font-family: 'Lato', sans-serif;
 }
 
-.center{
-  margin-left:40%;
-  margin-right:40%;
-  margin-top:3em;
-}
+
 .tabs{
   margin-top:4em;
 }
@@ -20,7 +16,7 @@ body{
   justify-content: flex-start;
   align-items: center;
   padding: 30px 20px 0;
-  width: 70%;
+  
   border-bottom: 1px solid #cecece;
   font-family: Roboto, sans-serif;
   font-weight: 100;

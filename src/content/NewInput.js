@@ -88,23 +88,28 @@ this.setState({
                 <input 
                 name = "Item"
                 type = "text"
+                placeholder="Add Todo and click button"
                 className="InputOfTodos"
                 value = {this.state.Item}
                 onChange = {this.handleChange}
                 />
                 </label>
-
-                <button className="AddItemButton" onClick={this.handleClick}>Add ITEM</button> 
+<div className="buttonToCenter">
+                    <button className="AddItemButton" onClick={this.handleClick}>Add ITEM</button> 
+                    </div>
                 {list.map((item)  =>
               <div>
-                  <div className="CheckBoxOfTodosmapped">
+                  <div className="CheckBoxOfTodosmappeddiv" onClick = {() => this.handletodo(item.id)}>
+                  
+
              <input 
                 name = {item.id}
                 type = "checkbox"
-            
+            id="checcerbox"
                 checked = {item.completed}
-                onChange = {() => this.handletodo(item.id)}
+                
                 />
+               <span class="checkmark"></span>
                 </div>
                 <input 
                 name="name"

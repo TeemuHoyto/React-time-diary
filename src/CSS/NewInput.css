@@ -107,7 +107,7 @@ input[type='checkbox'] {
     top: 0.2em;
     width: 0.8em;
     height: 1.7em;
-    border: solid rgb(209, 255, 2);
+    border: solid rgb(217, 255, 2);
     border-width: 0 3px 3px 0;
     transform: rotate(30deg);
 }

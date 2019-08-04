@@ -14,6 +14,7 @@ class NewInput extends React.Component{
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
         this.handletodo = this.handletodo.bind(this)
+        this.handleChangeAwesome = this.handleChangeAwesome.bind(this)
     }
 
   
@@ -25,9 +26,11 @@ const newItem = this.state.Item
 if (this.state.Item === ''){
     return null
 }else{
+    
 const completed = false
 const id = this.state.list.length +1
-const OBJ = {'id':id, 'itemm':newItem, 'completed':completed}
+const placeholder = "NameOfObject " + newItem +" " +  id
+const OBJ = {'id':id, 'itemm':newItem, "placeholder":placeholder, 'completed':completed}
 
 this.setState(prevState => {
 prevState.list.push(OBJ)
@@ -65,13 +68,32 @@ this.setState({
         })
         
     }
- /*   handleChangeAwesome(event){
-        
-        this.setState({
-            list.itemm: event.target.value
+    handleChangeAwesome({id}){
+        this.setState(prevState => {
+            const updatedTodos = prevState.list.map(todo => {
+                if (todo.id === id) {
+                    todo.itemm.value = prevState.list.itemm
+                }
+                return todo
+            })
+            return {
+                list: updatedTodos
+                
+            }
+            
         })
-        
-    }*/
+        {console.log(this.state.list)}
+    }
+
+    handleShareholderNameChange = id => evt => {
+        const newList = this.state.list.map((item, id) => {
+            if (id == id) return item;
+            return { ...item, itemm: evt.target.value };
+          });
+      
+          this.setState({ list: newList });
+        };
+
 
     render(){
 
@@ -94,7 +116,7 @@ this.setState({
                 onChange = {this.handleChange}
                 />
                 </label>
-<div className="buttonToCenter">
+            <div className="buttonToCenter">
                     <button className="AddItemButton" onClick={this.handleClick}>Add ITEM</button> 
                     </div>
                 {list.map((item)  =>
@@ -112,12 +134,16 @@ this.setState({
                <span class="checkmark"></span>
                 </div>
                 <input 
+                key= {item.id}
+                placeholder = {item.placeholder}
                 name="name"
                 type="text"
                 className="InputOfTodosmapped"
                 value={item.itemm}
                 id = {item.id}
-                style={item.completed ? completedStyle : null } />
+                style={item.completed ? completedStyle : null } 
+                onChange={this.handleShareholderNameChange}
+                />
                 
                 </div>
                 )}

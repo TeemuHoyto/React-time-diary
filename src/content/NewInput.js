@@ -25,7 +25,7 @@ if (this.state.Item === ''){
 }else{
     
 const completed = false
-const id = this.state.list.length +1
+const id = Math.random()*999999999
 const placeholder = "NameOfObject " + newItem +" " +  id
 const OBJ = {'id':id, 'itemm':newItem, "placeholder":placeholder, 'completed':completed}
 
@@ -67,21 +67,38 @@ this.setState({
 
     handleTheChangeOfTodoContent = (id, event) => {
         
-        const index = this.state.list.findIndex((list)=> {
-            return (list.id === id);
+        const index = this.state.list.findIndex((lista)=> {
+            return (lista.id === id);
         })
     
         const liste = Object.assign({}, this.state.list[index]);
         liste.itemm = event.target.value;
     
-        const lists = Object.assign([], this.state.lists);
+        const lists = Object.assign([], this.state.list);
         lists[index] = liste;
     
         this.setState({list:lists});
       }
-    
 
-    render(){
+
+      handleDelete = (id) => {
+        const index = this.state.list.findIndex((list)=> {
+            return (list.id === id);
+        })
+           const todoes = Object.assign([], this.state.list);
+    todoes.splice(index,1);
+    this.setState({list:todoes});
+      }
+
+      CklickOfEnter(event){
+      if (event.keyCode === 13) {
+        
+        event.preventDefault();
+        document.getElementById("AddItemButton").click();
+      }
+    }
+
+        render(){
 
         const completedStyle = {
             textDecoration:" line-through",
@@ -89,7 +106,6 @@ this.setState({
         }
         let list = this.state.list
     
-     //   const TodoItems = this.state.list.item
         return(
             <div className="center">
                <label htmlFor="Item">
@@ -100,10 +116,11 @@ this.setState({
                 className="InputOfTodos"
                 value = {this.state.Item}
                 onChange = {this.handleChange}
+                onKeyUp = {this.CklickOfEnter}
                 />
                 </label>
             <div className="buttonToCenter">
-                    <button className="AddItemButton" onClick={this.handleClick}>Add ITEM</button> 
+                    <button className="AddItemButton" id="AddItemButton" onClick={this.handleClick}>Add ITEM</button> 
                     </div>
                 {list.map((item)  =>
               <div>
@@ -120,7 +137,7 @@ this.setState({
                <span className="checkmark"></span>
                 </div>
                 <input 
-                key= {item.item + item.id}
+                key= {item.id}
                 placeholder = {item.placeholder}
                 name={item.itemm}
                 type="text"
@@ -130,7 +147,10 @@ this.setState({
                 style={item.completed ? completedStyle : null } 
                 onChange={this.handleTheChangeOfTodoContent.bind(this, item.id)}
                 />
-                
+                   <button 
+                   className="deleteButton"
+                  onClick={this.handleDelete.bind(this, item.id)}
+                   >X</button>
                 </div>
                 )}
             </div>

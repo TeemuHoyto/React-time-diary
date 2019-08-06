@@ -10,7 +10,7 @@ button {
     padding: 0.5em;
     margin: 1em;
     font-family: 'Lato', sans-serif;
-    width:40%;
+    width:35%;
     user-select: none;
    
 }
@@ -81,7 +81,6 @@ input[type='checkbox'] {
     height: 2em;
     padding: 0.4em;
     border-radius: 50%;
-    cursor: pointer;
     font-size: 0.8em;
     display: flex;
     justify-content: center;
@@ -123,4 +122,17 @@ button:focus {
 
 input:focus {
     outline: none;
+}
+.deleteButton{
+position: absolute;
+left:48em;
+height:1.5em;
+width:1.5em;
+margin-top:-1.7em;
+font-size:1.7em;
+border-radius: 50%;
+font-family: 'Lato', sans-serif;
+}
+.deleteButton:hover{
+    background-color: rgba(255, 255, 255, 0.212);
 }

@@ -6,15 +6,12 @@ class NewInput extends React.Component{
         super(props)
         this.state = {
             Item:"",
-            list:[
-
-            ],
+            list:[],
             
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
         this.handletodo = this.handletodo.bind(this)
-        this.handleChangeAwesome = this.handleChangeAwesome.bind(this)
     }
 
   
@@ -56,7 +53,6 @@ this.setState({
                 }
                 
             })
-            {console.log(this.state.list)}
         }
         
     handleChange(event){
@@ -68,32 +64,22 @@ this.setState({
         })
         
     }
-    handleChangeAwesome({id}){
-        this.setState(prevState => {
-            const updatedTodos = prevState.list.map(todo => {
-                if (todo.id === id) {
-                    todo.itemm.value = prevState.list.itemm
-                }
-                return todo
-            })
-            return {
-                list: updatedTodos
-                
-            }
-            
+
+    handleTheChangeOfTodoContent = (id, event) => {
+        
+        const index = this.state.list.findIndex((list)=> {
+            return (list.id === id);
         })
-        {console.log(this.state.list)}
-    }
-
-    handleShareholderNameChange = id => evt => {
-        const newList = this.state.list.map((item, id) => {
-            if (id == id) return item;
-            return { ...item, itemm: evt.target.value };
-          });
-      
-          this.setState({ list: newList });
-        };
-
+    
+        const liste = Object.assign({}, this.state.list[index]);
+        liste.itemm = event.target.value;
+    
+        const lists = Object.assign([], this.state.lists);
+        lists[index] = liste;
+    
+        this.setState({list:lists});
+      }
+    
 
     render(){
 
@@ -129,20 +115,20 @@ this.setState({
                 type = "checkbox"
             id="checcerbox"
                 checked = {item.completed}
-                
+                onChange = {this.handleChange}
                 />
-               <span class="checkmark"></span>
+               <span className="checkmark"></span>
                 </div>
                 <input 
-                key= {item.id}
+                key= {item.item + item.id}
                 placeholder = {item.placeholder}
-                name="name"
+                name={item.itemm}
                 type="text"
                 className="InputOfTodosmapped"
                 value={item.itemm}
                 id = {item.id}
                 style={item.completed ? completedStyle : null } 
-                onChange={this.handleShareholderNameChange}
+                onChange={this.handleTheChangeOfTodoContent.bind(this, item.id)}
                 />
                 
                 </div>

@@ -11,13 +11,15 @@ button {
     margin: 1em;
     font-family: 'Lato', sans-serif;
     width:35%;
+    margin-left:40%;
+    margin-right:40%;
     user-select: none;
    
 }
 .buttonToCenter{
-    
+    overflow: hidden;
     width:100%;
-    margin-left:80%;
+
 }
 .InputOfTodosmapped {
     color: white;
